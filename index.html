@@ -17,7 +17,7 @@
 
 <body>
     <!-- As a heading -->
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light">
         <div class="container-fluid">
             <div class="menu" onclick="myFunction(this)">
                 <div class="bar1"></div>
@@ -25,24 +25,81 @@
                 <div class="bar3"></div>
             </div>
 
-            <!-- <p> -->
-            <img src="./assets/img/keep_.png" alt="">
-            <span class="navbar-brand">Keep</span>
-            <!-- </p> -->
+            <p class="logo">
+             <img src="./assets/img/keep_.png" alt="">
+             <span class="navbar-brand">Keep</span>
+            </p>
             
-            <div class="navbar-searchbar mx-auto">
-                <input type="text" placeholder="search" style="width: 800px; padding: 5px;" >
+            <div class="navbar-searchbar ">
+                <i class="bi bi-search"></i>
+                <input type="text" placeholder="Search" style="width: 650px;" >
             </div>
 
-            <div class="navbar-icon mx-2">
+            <div class="navbar-icon">
                 <span><i class="bi bi-arrow-clockwise"></i></span>
                 <span><i class="bi bi-view-list"></i></span>
                 <span><i class="bi bi-gear"></i></span>
                 <span><i class="bi bi-google"></i></span>
             </div>
-
+           
         </div>
     </nav>
+    <hr class="line">
+
+    <!-- END NAVBAR -->
+
+
+    <!-- START HERO SECTION -->
+    <section class="table" id="table">
+        <div class="container-fluid">
+            <div class="row">
+              <div class="col-4">
+
+               <div class="one">
+                 <span><i class="bi bi-lightbulb"></i></span>
+                 <p>Notes</p>
+               </div>
+
+               <div class="one">
+                <span><i class="bi bi-bell"></i></span>
+                <p>Reminder</p>
+              </div>
+
+              <div class="one">
+                <span><i class="bi bi-bookmark"></i></span>
+                <p>node</p>
+              </div>
+
+              <div class="one">
+                <span><i class="bi bi-pencil"></i></span>
+                <p>Edit labels</p>
+              </div>
+
+              <div class="one">
+                <span><i class="bi bi-file-arrow-down"></i></span>
+                <p>Archieve</p>
+              </div>
+
+              <div class="one">
+                <span><i class="bi bi-trash"></i></span>
+                <p>Trash</p>
+              </div>
+
+              </div>
+              <div class="col-8">
+                <div class="home-searchbar ">
+                    <!-- <i class="bi bi-search"></i> -->
+                    <input type="text" placeholder="Take a note" style="width: 650px;" >
+                </div>
+              </div>
+            </div>
+        </div>
+
+    </section>
+
+   
+   
+
 
 
 
