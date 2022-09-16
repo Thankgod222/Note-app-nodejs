@@ -16,12 +16,18 @@ linkWork.forEach(l => l.addEventListener("click", activeWork));
 
 
 
-$(function () {
-  $(document).scroll(function () {
-      var $nav = $("#navBar");
-      $nav.toggleClass("scrolled", $(this).scrollTop() > 30);
-  });
-});
+// $(function () {
+//   $(document).scroll(function () {
+//       var $nav = $("#navBar");
+//       $nav.toggleClass("scrolled", $(this).scrollTop() > 30);
+//   });
+// });
+
+function myFunction() {
+  alert("The form was submitted");
+}
+
+
 
 
 
