@@ -22,7 +22,7 @@ mongoose.connect(process.env.db_Url, {
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
   session({
@@ -51,8 +51,8 @@ app.get("/", async function (req, res) {
 app.post("/create", async function (req, res) {
 
     const newNote = new Note({
-    // title: req.body.title,
-    // description: req.body.description,
+    title: req.body.title,
+    description: req.body.description,
   });
   
    newNote.save(function (err) {

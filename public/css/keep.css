@@ -206,25 +206,38 @@ section .container-fluid {
     color: #eb5d1e;
 }
 
-.home-box-container {
-    margin-right: 4rem;
-    margin-left: 4rem;
-}
-
-.home-group .border {
-    width: 270px;
-    height: 400px;
-}
-
 .home-group {
     display: grid;
     /* flex-direction: row; */
     margin-right: 2rem;
     margin-left: 2rem;
+    height: auto;
     position: relative;
-    grid-template-columns: repeat(3, max-content);
+    grid-template-columns: repeat(4, max-content);
     gap: 14px;
     /* top: 20px; */
     justify-content: center;
     margin-top: 1rem;
+}
+
+.home-group .border {
+    width: 250px;
+    height: fit-content;
+    word-break: break-all;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+
+.border .icon{
+    opacity: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 1.4rem;
+    /* row-gap: 1.2rem; */ 
+}
+
+.border:hover .icon{
+    opacity: 1;
 }

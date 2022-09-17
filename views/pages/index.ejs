@@ -141,25 +141,34 @@
                     <div class="home-searchbar">
                         <!-- <i class="bi bi-search"></i> -->
                         <form action="/create" method="POST" onsubmit="myFunction()">
-                           <input type="text" placeholder="Take a note" style="width: 550px;">
+                           <input type="text" name="title" placeholder="Take a note" style="width: 550px;" >
                         </form>
                     </div>
 
                     <!-- <div class="home-box-container"> -->
                     <div class="home-group">
-                        <!-- <div class="row"> -->
                       <% note.forEach(function(note, index) { %>
-                        <!-- <div class="border"><%= note %></div> -->
-                        <div class="border col-4"><%= note.title %></div>
-                        <!-- <div class="border col-4"></div>
-                        <div class="border col-4"></div>
-                        <div class="border col-4"></div>
-                        <div class="border col-4"></div> -->
-                 <% }) %>
-                        <!-- </div> -->
-                    </div>
-                    <!-- </div> -->
+                
+                        <div class="border col-4">
+                            <%= note.title %> <br>
+                            <%= note.description %> 
 
+                            <div class="icon">
+                                <i class="bi bi-bell"></i>
+                                <i class="bi bi-person-plus-fill"></i>
+                                <i class="bi bi-palette"></i>
+                                <i class="bi bi-file-image-fill"></i>
+                                <i class="bi bi-file-arrow-down"></i>
+                                <svg viewBox="0 0 24 24" width="24" height="24" class="">
+                                    <path fill="currentColor" d="M12 7a2 2 0 1 0-.001-4.001A2 2 0 0 0 12 7zm0 2a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 9zm0 6a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 15z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                 <% }) %>
+                      
+                    </div>
+        
                 </div>
             </div>
 
