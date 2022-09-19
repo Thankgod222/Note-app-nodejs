@@ -3,8 +3,9 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
+const methodOverride = require('method-override')
 const session = require("express-session");
-const Note = require("./model/Note");
+const Note = require("./server/model/Note");
 
 
 const app = express();
@@ -23,6 +24,7 @@ mongoose.connect(process.env.db_Url, {
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
 app.use(
   session({
@@ -36,6 +38,9 @@ app.set("view engine", "ejs");
 
 
 
+const route = require("./server/route/noteRoutes")
+app.use("/", route);
+
 app.get("/", async function (req, res) {
   Note.find({}, (error, port) => {
     if (error) {
@@ -48,24 +53,9 @@ app.get("/", async function (req, res) {
  });
 
 
-app.post("/create", async function (req, res) {
 
-    const newNote = new Note({
-    title: req.body.title,
-    description: req.body.description,
-  });
-  
-   newNote.save(function (err) {
-    // res.send(err);
-    if (!err) {
-      // res.send("Successfully added a new note.");
-      res.redirect("/")
-    } else {
-      
-      res.status(400).send(err.message);
-    }
-  });
-})
+
+
   
 
 const port = process.env.PORT || 3000;

@@ -241,3 +241,28 @@ section .container-fluid {
 .border:hover .icon{
     opacity: 1;
 }
+
+.home-searchbar2 {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    line-height: 2.6;
+    /* height: 46px; */
+}
+
+.home-searchbar2 .input1{
+    width: 500px;
+    border: 2px solid #f1f3f4;
+    box-shadow: 10px 10px 10px #fff;
+    border-radius: 10px;
+    padding-left: 10px;
+    transition: 0.3s;
+}
+
+.home-searchbar2 .input1:empty:not(:focus):before {
+    content: attr(data-placeholder)
+  }
+
+
+
+

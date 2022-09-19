@@ -31,9 +31,15 @@
                 <span class="navbar-brand">Keep</span>
             </span>
 
+            <!-- <form action="/notes" method="POST" onsubmit="myFunction()">
+                <input type="text" name="title" placeholder="Take a note" style="width: 550px;" >
+             </form> -->
+
             <li class="navbar-searchbar">
                 <i class="bi bi-search"></i>
-                <input type="text" placeholder="Search" style="width: 650px;">
+                <!-- <form href="/notes" method="GET" onsubmit="myFunction()"> -->
+                    <input type="search" placeholder="Search" name="title" style="width: 650px;">
+                <!-- </form> -->
             </li>
 
             <li class="navbar-icon">
@@ -140,9 +146,21 @@
 
                     <div class="home-searchbar">
                         <!-- <i class="bi bi-search"></i> -->
-                        <form action="/create" method="POST" onsubmit="myFunction()">
-                           <input type="text" name="title" placeholder="Take a note" style="width: 550px;" >
+                        <form action="/notes" method="POST">
+                           <input type="text" name="title" placeholder="Take a note" style="width: 550px; display: none;" >
                         </form>
+                    </div>
+
+                    <div class="home-searchbar2">
+
+                      <div class="input1" contenteditable="true" data-placeholder="(untitled)"  aria-multiline="true"
+                        role="textbox" tabindex="0" aria-label="Title" spellcheck="true">
+                      </div>
+
+                      <div class="input2" contenteditable="true" data-placeholder="(untitled)"  aria-multiline="true"
+                        role="textbox" tabindex="0" aria-label="Title" spellcheck="true">
+                      </div>
+
                     </div>
 
                     <!-- <div class="home-box-container"> -->
@@ -159,10 +177,20 @@
                                 <i class="bi bi-palette"></i>
                                 <i class="bi bi-file-image-fill"></i>
                                 <i class="bi bi-file-arrow-down"></i>
-                                <svg viewBox="0 0 24 24" width="24" height="24" class="">
-                                    <path fill="currentColor" d="M12 7a2 2 0 1 0-.001-4.001A2 2 0 0 0 12 7zm0 2a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 9zm0 6a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 15z">
-                                    </path>
-                                </svg>
+                                <div class="dropdown ">
+                                    <a type="button" class="" data-bs-toggle="dropdown">
+                                        <svg viewBox="0 0 24 24" width="24" height="24" class="">
+                                            <path fill="currentColor" d="M12 7a2 2 0 1 0-.001-4.001A2 2 0 0 0 12 7zm0 2a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 9zm0 6a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 15z">
+                                            </path>
+                                        </svg>
+                                    </a>
+                                  
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/notes/<%= note.title %> " type="button" class="dropdown-item" onclick="myDelete()">delete</a></li> 
+                                        <li><a class="dropdown-item" href="#">Link 3</a></li>
+                                    </ul>
+                                  </div>
+                                
                             </div>
                         </div>
                  <% }) %>
@@ -206,3 +234,20 @@
 </body>
 
 </html>
+
+               <!-- <div class="input1-title">Title</div>
+                            <div contenteditable="true" aria-multiline="true" role="textbox" class="notranslate IZ65Hb-YPqjbf fmcmS-x3Eknd r4nke-YPqjbf"
+                             tabindex="0" style="" aria-label="Title" spellcheck="true"></div>
+                             <div class="IZ65Hb-r4nke-oxTTdb-dgXk3"></div> -->
+
+
+<!-- <div class="IZ65Hb-TBnied zTETae-h1U9Be-hxXJme"><div class="IZ65Hb-s2gQvd"><div role="button" class="Q0hgme-LgbsSe Q0hgme-Bz112c-LgbsSe IZ65Hb-nQ1Faf VIpgJd-LgbsSe" tabindex="0" data-tooltip-text="Pin note" aria-label="Pin note" style="user-select: none;" aria-pressed="false"></div><div class="IZ65Hb-nQ1Faf-cQwEuf"></div><div class="IZ65Hb-hYUzqc"><div class="IZ65Hb-HiaYvf-neVct"></div></div><div class="IZ65Hb-r4nke-haAclf"><div class="LwH6nd notranslate IZ65Hb-YPqjbf r4nke-YPqjbf">Title</div><div contenteditable="true" aria-multiline="true" role="textbox" class="notranslate IZ65Hb-YPqjbf fmcmS-x3Eknd r4nke-YPqjbf" tabindex="0" style="" aria-label="Title" spellcheck="true"></div><div class="IZ65Hb-r4nke-oxTTdb-dgXk3"></div></div><div class="IZ65Hb-qJTHM-haAclf"><div class="LwH6nd notranslate IZ65Hb-YPqjbf h1U9Be-YPqjbf" style="">Take a note…</div><div contenteditable="true" aria-multiline="true" role="textbox" class="notranslate IZ65Hb-YPqjbf fmcmS-x3Eknd h1U9Be-YPqjbf" tabindex="0" spellcheck="true" aria-label="Take a note…"></div><div class="IZ65Hb-qJTHM-oxTTdb-dgXk3"></div></div><div class="IZ65Hb-jfdpUb xFQqWe"><div class="Q0hgme-XPtOyb YPIHXb-Hjleke-XPtOyb" style="display: none;"><div role="button" class="Q0hgme-LgbsSe XPtOyb-bN97Pc VIpgJd-LgbsSe" tabindex="0" style="user-select: none;"><div class="XPtOyb-Bz112c"></div><label class="XPtOyb-fmcmS"></label></div><div role="button" class="Q0hgme-LgbsSe Q0hgme-Bz112c-LgbsSe XPtOyb-VkLyEc VIpgJd-LgbsSe" tabindex="0" data-tooltip-text="Remove source" aria-label="Remove source" style="user-select: none;"></div></div><div class="Q0hgme-XPtOyb zyxPWd-XPtOyb" style="display: none;"><div role="button" class="Q0hgme-LgbsSe XPtOyb-bN97Pc VIpgJd-LgbsSe" tabindex="0" style="user-select: none;"><div class="XPtOyb-Bz112c"></div><label class="XPtOyb-fmcmS"></label></div><div role="button" class="Q0hgme-LgbsSe Q0hgme-Bz112c-LgbsSe XPtOyb-VkLyEc VIpgJd-LgbsSe" tabindex="0" data-tooltip-text="Delete reminder" aria-label="Delete reminder" style="user-select: none;"></div></div><div class="IZ65Hb-jfdpUb-fmcmS" data-tooltip-text="Created 5:11 PM" aria-label="Created 5:11 PM">Edited 5:18 PM</div></div><div class="IZ65Hb-kODWGd" style="display: none;"></div><div class="IZ65Hb-hSRGPd-e1YmVc-FCjw3e"></div></div><div class="IZ65Hb-yePe5c"><div role="button" class="Q0hgme-LgbsSe Q0hgme-fmcmS-LgbsSe IZ65Hb-iib5kc VIpgJd-LgbsSe" tabindex="0" style="user-select: none;">Close</div><div class="IZ65Hb-INgbqf" role="toolbar"><div role="button" class="Q0hgme-LgbsSe Q0hgme-Bz112c-LgbsSe nQ1Faf INgbqf-LgbsSe VIpgJd-LgbsSe" tabindex="0" data-tooltip-text="Pin" aria-label="Pin" style="user-select: none;"></div><div role="button" class="Q0hgme-LgbsSe Q0hgme-Bz112c-LgbsSe zyxPWd-iib5kc INgbqf-LgbsSe VIpgJd-LgbsSe" data-tooltip-text="Mark as done" aria-label="Mark as done" aria-hidden="true" style="user-select: none; display: none;"></div><div role="button" class="Q0hgme-LgbsSe Q0hgme-Bz112c-LgbsSe zyxPWd INgbqf-LgbsSe VIpgJd-LgbsSe" tabindex="0" data-tooltip-text="Remind me" aria-label="Remind me" style="user-select: none;"></div><div role="button" class="Q0hgme-LgbsSe Q0hgme-Bz112c-LgbsSe euCgFf INgbqf-LgbsSe VIpgJd-LgbsSe" tabindex="0" data-tooltip-text="Collaborator" aria-label="Collaborator" style="user-select: none;"></div><div role="button" class="Q0hgme-LgbsSe Q0hgme-Bz112c-LgbsSe VsHK1d INgbqf-LgbsSe VIpgJd-LgbsSe" tabindex="0" data-tooltip-text="Background options" aria-label="Background options" style="user-select: none;"></div><div role="button" class="Q0hgme-LgbsSe Q0hgme-Bz112c-LgbsSe Ge5tnd-HiaYvf INgbqf-LgbsSe VIpgJd-LgbsSe" tabindex="0" data-tooltip-text="Add image" aria-label="Add image" style="user-select: none;"></div><div role="button" class="Q0hgme-LgbsSe Q0hgme-Bz112c-LgbsSe JqEhuc INgbqf-LgbsSe VIpgJd-LgbsSe" tabindex="0" data-tooltip-text="Archive" aria-label="Archive" style="user-select: none;"></div><div role="button" class="Q0hgme-LgbsSe Q0hgme-Bz112c-LgbsSe xl07Ob INgbqf-LgbsSe VIpgJd-LgbsSe" tabindex="0" data-tooltip-text="More" aria-label="More" style="user-select: none;"></div><div role="button" class="Q0hgme-LgbsSe Q0hgme-Bz112c-LgbsSe VkLyEc-LPmGke INgbqf-LgbsSe VIpgJd-LgbsSe" tabindex="0" data-tooltip-text="Delete forever" aria-label="Delete forever" style="user-select: none;"></div><div role="button" class="Q0hgme-LgbsSe Q0hgme-Bz112c-LgbsSe E8fGCc INgbqf-LgbsSe VIpgJd-LgbsSe" tabindex="0" data-tooltip-text="Restore" aria-label="Restore" style="user-select: none;"></div><div role="button" class="Q0hgme-LgbsSe Q0hgme-Bz112c-LgbsSe PEFSMe-IZ65Hb INgbqf-LgbsSe VIpgJd-LgbsSe" data-tooltip-text="Print to console (debug)" aria-label="Print to console (debug)" aria-hidden="true" style="user-select: none; display: none;"></div><div role="button" class="Q0hgme-LgbsSe Q0hgme-Bz112c-LgbsSe sfGayb INgbqf-LgbsSe VIpgJd-LgbsSe" data-tooltip-text="Undo" aria-label="Undo" style="user-select: none;" aria-disabled="false" tabindex="0"></div><div role="button" class="Q0hgme-LgbsSe Q0hgme-Bz112c-LgbsSe uXLMpd INgbqf-LgbsSe VIpgJd-LgbsSe VIpgJd-LgbsSe-OWB6Me" data-tooltip-text="Redo" aria-label="Redo" style="user-select: none;" aria-disabled="true"></div></div></div></div> -->
+
+
+
+
+
+
+
+
+

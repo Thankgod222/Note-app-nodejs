@@ -27,6 +27,10 @@ function myFunction() {
   alert("The form was submitted");
 }
 
+function myDelete() {
+  alert("The note was deleted"); 
+}
+
 
 
 
