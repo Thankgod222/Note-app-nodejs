@@ -247,21 +247,76 @@ section .container-fluid {
     position: relative;
     justify-content: center;
     line-height: 2.6;
-    /* height: 46px; */
+}
+
+.home-searchbar2box{
+    display: flex;
+    flex-direction: column;
+    padding: .3rem .5rem;
+    border-radius: 10px;
+    border: 3px solid #fff;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302),0 2px 6px 2px rgba(60,64,67,0.149);
 }
 
 .home-searchbar2 .input1{
     width: 500px;
-    border: 2px solid #f1f3f4;
+    /* border: 2px solid #f1f3f4; */
+    /* box-shadow: 10px 10px 10px #fff; */
+    border-radius: 10px;
+    padding-left: 10px;
+    transition: 0.3s;
+    outline: none;
+}
+
+.input1-box{
+    display: flex;
+    flex-direction: row;
+}
+
+.input1-box span{
+    position: relative;
+    left: 1.8rem;
+}
+
+div[data-placeholder]:not(:focus):not([data-div-placeholder-content]):before {
+   content: attr(data-placeholder);
+   float: left;
+   margin-left: 2px;
+   /* color: #b3b3b3; */
+}
+
+.home-searchbar2 .input2{
+    width: 500px;
+    /* border: 2px solid #f1f3f4; */
     box-shadow: 10px 10px 10px #fff;
+    outline: none;
     border-radius: 10px;
     padding-left: 10px;
     transition: 0.3s;
 }
 
-.home-searchbar2 .input1:empty:not(:focus):before {
-    content: attr(data-placeholder)
-  }
+.input3-box{
+    display: flex;
+    justify-content: space-between;
+}
+
+.input3-icon{
+    display: flex;
+    flex-direction: row;
+    gap: 35px;
+}
+
+.input1-subbox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
+
+
+
 
 
 

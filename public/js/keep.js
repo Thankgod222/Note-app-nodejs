@@ -28,8 +28,36 @@ function myFunction() {
 }
 
 function myDelete() {
-  alert("The note was deleted"); 
+  alert("The note was deleted");
 }
+
+document.getElementsByClassName(".home-searchbar").style.display = "block";
+document.getElementsByClassName(".home-searchbar2box").style.display = "none";
+
+function myopen() {
+  document.getElementsByClassName(".home-searchbar").style.display = "none";
+  document.getElementsByClassName(".home-searchbar2box").style.display = "block";
+}
+
+// (function ($) {
+
+// 	$(document).on('change keydown keypress input', 'div[data-placeholder]', function() {
+
+// 		if (this.textContent) {
+
+// 			this.dataset.divPlaceholderContent = 'true';
+
+// 		}
+
+// 		else {
+
+// 			delete(this.dataset.divPlaceholderContent);
+
+// 		}
+
+// 	});
+
+// })(jQuery);
 
 
 
