@@ -5,7 +5,10 @@ const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
 const methodOverride = require('method-override')
 const session = require("express-session");
-const Note = require("./server/model/Note");
+const noteRoutes = require("./server/route/noteRoutes");
+const userRoutes = require("./server/route/userRoutes")
+
+
 
 
 const app = express();
@@ -15,7 +18,7 @@ mongoose.connect(process.env.db_Url, {
     useUnifiedTopology: true,
   });
   
-  const db = mongoose.connection;
+const db = mongoose.connection;
   db.on("error", console.error.bind(console, "connection error:"));
   db.once("open", function () {
     console.log("connected");
@@ -35,28 +38,12 @@ app.use(
 );
 
 app.set("view engine", "ejs");
-
-
-
-const route = require("./server/route/noteRoutes")
-app.use("/", route);
-
-app.get("/", async function (req, res) {
-  Note.find({}, (error, port) => {
-    if (error) {
-      console.log(err);
-       res.status(500).send({ message: error });
-    } else {
-      res.render("pages/index", { note: port });
-    }
-  });
- });
+app.use("/", noteRoutes);
+app.use("/", userRoutes);
 
 
 
 
-
-  
 
 const port = process.env.PORT || 3000;
 

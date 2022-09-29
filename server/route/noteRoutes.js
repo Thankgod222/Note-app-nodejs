@@ -3,6 +3,17 @@ const router = express.Router();
 const Note = require("../model/Note");
 
 
+router.get("/", async function (req, res) {
+  Note.find({}, (error, port) => {
+    if (error) {
+      console.log(err);
+       res.status(500).send({ message: error });
+    } else {
+      res.render("pages/index", { note: port });
+    }
+  });
+ });
+
 
 router.post("/notes", async function (req, res) {
 
@@ -51,18 +62,6 @@ router.get("/notes/:noteTitle", async function (req, res) {
     }
   )
 })
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
