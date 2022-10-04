@@ -7,6 +7,7 @@ const methodOverride = require('method-override')
 const session = require("express-session");
 const noteRoutes = require("./server/route/noteRoutes");
 const userRoutes = require("./server/route/userRoutes")
+const User = require("./server/model/User")
 
 
 
@@ -36,6 +37,11 @@ app.use(
     resave: true,
   })
 );
+
+
+
+
+
 
 app.set("view engine", "ejs");
 app.use("/", noteRoutes);
