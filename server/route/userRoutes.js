@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const User = require("../model/User")
+const User = require("../model/User");
+
 
 
 
@@ -8,15 +9,17 @@ router.get("/register", function (req, res) {
     res.render("pages/register")
 })
 
-router.post("/register", async function (req, res) {
   
-    const newUser = new User({
+router.post("/register", async function (req, res) {
+    const user = new User({
      username: req.body.username,
      email: req.body.email,
      password: req.body.password
-  })
-   newUser.save(function (err) {
-      if (!err) {
+    })
+  user.save(function (err, savedUser) {
+    console.log(savedUser);
+    if (!err) {
+        req.session.user = savedUser._id;
       res.redirect("/")
     } else {
       
@@ -25,25 +28,20 @@ router.post("/register", async function (req, res) {
   })
 })
 
+  
 router.get("/login", function (req, res) {
     res.render("pages/login")
 })
 
-
 router.post("/login", async (req, res) => {
-   const { email, password } = req.body
+ const { email, password } = req.body;
   try {
-    const user = await User.findOne({ email, password })
+    const user = await User.findOne({ email, password });
     if (!user) {
-      res.status(401).json({
-        message: "Login not successful",
-        error: "User not found",
-      })
+      
+      res.redirect("/register")
     } else {
-      res.status(200).json({
-        message: "Login successful",
-        user,
-      })
+      res.redirect("/")
     }
   } catch (error) {
     res.status(400).json({
@@ -53,8 +51,8 @@ router.post("/login", async (req, res) => {
   }
 })
 
+router.post("/logout", function (req, res) {
+     res.redirect("/login")
+})
 
-
-
-
-module.exports = router;
+  module.exports = router;

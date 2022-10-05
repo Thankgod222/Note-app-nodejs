@@ -9,6 +9,10 @@ const noteSchema = new mongoose.Schema({
     type: String,
     required: "This field is required.",
   },
+  author: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: "User"
+  },
   },
   {timestamps: true}
   );

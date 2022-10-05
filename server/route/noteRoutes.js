@@ -19,13 +19,13 @@ router.post("/notes", async function (req, res) {
 
     const newNote = new Note({
     title: req.body.title,
-    description: req.body.description,
+    description: req.body.description, 
+    author: req.session.user,
   });
   
    newNote.save(function (err) {
     // res.send(err);
-    if (!err) {
-      // res.send("Successfully added a new note.");
+     if (!err) {
       res.redirect("/")
     } else {
       
@@ -39,9 +39,8 @@ router.get("/notes", async function (req, res) {
     Note.find(
      { title: req.params.title},
       function(err) {
-      if (!err) {
+        if (!err) {
         res.redirect("/")
-        // res.send("successsfully gotten  a note");
     } else {
         res.send(err);
       }
@@ -55,14 +54,12 @@ router.get("/notes/:noteTitle", async function (req, res) {
     function(err) {
       if (!err) {
         res.redirect("/")
-        // res.send("successsfully it deleted a note");
       } else {
         res.send(err);
       }
     }
   )
 })
-
 
 
 

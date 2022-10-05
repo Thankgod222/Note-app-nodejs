@@ -39,8 +39,10 @@ app.use(
 );
 
 
-
-
+app.use((req, res, next) => {
+   res.locals.currentUser = req.savedUser;
+   next();
+})
 
 
 app.set("view engine", "ejs");
