@@ -1,7 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const User = require("../model/User");
+const session = require("express-session");
 
+
+
+router.use(
+  session({
+    secret: "MyNoteAppSecretSession",
+    saveUninitialized: true,
+    resave: true,
+  })
+);
 
 
 
@@ -17,12 +27,12 @@ router.post("/register", async function (req, res) {
      password: req.body.password
     })
   user.save(function (err, savedUser) {
-    console.log(savedUser);
+    // console.log(savedUser);
     if (!err) {
-        req.session.user = savedUser._id;
+      // SAVING SESSION TO A USER.ID
+       req.session.user = savedUser;
       res.redirect("/")
-    } else {
-      
+    } else { 
       res.status(400).send(err.message);
     }
   })
@@ -34,14 +44,15 @@ router.get("/login", function (req, res) {
 })
 
 router.post("/login", async (req, res) => {
- const { email, password } = req.body;
+  const { email, password } = req.body;
   try {
     const user = await User.findOne({ email, password });
-    if (!user) {
-      
-      res.redirect("/register")
-    } else {
+   
+    if (user) {
+        req.session.user = user;
       res.redirect("/")
+    } else {
+      res.redirect("/register")
     }
   } catch (error) {
     res.status(400).json({
@@ -51,8 +62,9 @@ router.post("/login", async (req, res) => {
   }
 })
 
-router.post("/logout", function (req, res) {
-     res.redirect("/login")
+router.get("/logout", function (req, res) {
+  req.session.user = null;
+   res.redirect("/login") 
 })
 
   module.exports = router;

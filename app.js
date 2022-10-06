@@ -5,8 +5,9 @@ const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
 const methodOverride = require('method-override')
 const session = require("express-session");
+const cookieParser = require('cookie-parser')
 const noteRoutes = require("./server/route/noteRoutes");
-const userRoutes = require("./server/route/userRoutes")
+const userRoutes = require("./server/route/userRoutes");
 const User = require("./server/model/User")
 
 
@@ -29,6 +30,8 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
+app.use(cookieParser())
+
 
 app.use(
   session({
@@ -40,7 +43,7 @@ app.use(
 
 
 app.use((req, res, next) => {
-   res.locals.currentUser = req.savedUser;
+  currentUser = req.session.user;
    next();
 })
 
