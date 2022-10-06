@@ -16,22 +16,28 @@ router.get("/", async function (req, res) {
 
 
 router.post("/notes", async function (req, res) {
-
+   const { id } = req.params;
+    const note = await Note.findById(id);
+   if(note.author.equals(req.user._id)) {
     const newNote = new Note({
     title: req.body.title,
     description: req.body.description, 
     author: req.session.user,
-  });
-  
+    });
+
    newNote.save(function (err) {
     // res.send(err);
      if (!err) {
       res.redirect("/")
     } else {
-      
       res.status(400).send(err.message);
     }
-  });
+   });
+       
+  } else {
+     res.status(400).send(err.message); 
+  }
+  
 })
 
 

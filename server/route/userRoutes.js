@@ -8,8 +8,8 @@ const session = require("express-session");
 router.use(
   session({
     secret: "MyNoteAppSecretSession",
+    resave: false,
     saveUninitialized: true,
-    resave: true,
   })
 );
 
@@ -49,6 +49,7 @@ router.post("/login", async (req, res) => {
     const user = await User.findOne({ email, password });
    
     if (user) {
+      // console.log(user.username)
         req.session.user = user;
       res.redirect("/")
     } else {
@@ -63,8 +64,15 @@ router.post("/login", async (req, res) => {
 })
 
 router.get("/logout", function (req, res) {
-  req.session.user = null;
-   res.redirect("/login") 
+   req.session.destroy(function(err) {
+  // cannot access session here
+     res.redirect("/login")
 })
+   
+})
+
+
+
+
 
   module.exports = router;

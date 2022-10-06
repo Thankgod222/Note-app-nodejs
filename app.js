@@ -36,8 +36,8 @@ app.use(cookieParser())
 app.use(
   session({
     secret: "MyNoteAppSecretSession",
+    resave: false,
     saveUninitialized: true,
-    resave: true,
   })
 );
 
