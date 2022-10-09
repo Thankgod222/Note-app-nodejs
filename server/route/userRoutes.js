@@ -55,7 +55,7 @@ router.post("/login", async (req, res) => {
 
 router.get("/logout", async function (req, res) {
    req.session.destroy(function(err) {
-    console.log('Destroyed session')
+    // console.log('Destroyed session')
      res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
 res.header('Expires', '-1');
 res.header('Pragma', 'no-cache');

@@ -139,6 +139,10 @@ section .container-fluid {
     position: fixed;
     padding-left: 23px;
     text-decoration: none;
+    background-position: 20px;
+    background-color: #eb5d1e;
+    height: 100vh;
+    border-radius: 10px;
 }
 
 .homeboard a {
@@ -150,8 +154,8 @@ section .container-fluid {
     display: flex;
     flex-direction: row;
     gap: 30px;
-    left: -31px;
-    top: -10px;
+    left: -22px;
+    top: 10px;
     border-start-end-radius: 50px;
     border-bottom-right-radius: 50px;
     padding-left: 32px;
